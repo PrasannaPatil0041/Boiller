@@ -94,6 +94,8 @@ public class HomePages extends JFrame implements ActionListener {
             Timer.Restart();
        }
     }
+
+    
     public static void main(String[] args) {
         new HomePages();
     }
