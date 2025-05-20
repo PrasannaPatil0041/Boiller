@@ -39,16 +39,17 @@ public class HomePages extends JFrame implements ActionListener {
         JLabel image = new JLabel(i3);
         image.setBounds(0, 30, 500, 300);
         image.setHorizontalAlignment(SwingConstants.CENTER);
+       // BufferedImage rotatedImage = ImageUtils.rotateImage(image, 45);
         add(image);
         
 
         JLabel Times= new JLabel("");
-        Times.setBounds(0, 360, 500, 60);
+        Times.setBounds(0, 340, 500, 60);
         Times.setFont(new Font("Arial", Font.BOLD, 40));
         Times.setHorizontalAlignment(SwingConstants.CENTER);
         add(Times);
 
-        Timer= new ManualTimer(Times);
+        Timer= new ManualTimer(Times,image);
         
         start = new JButton("Start");
         start.addActionListener(this);
@@ -62,6 +63,7 @@ public class HomePages extends JFrame implements ActionListener {
 
         stop = new JButton("Stop");
         stop.setBounds(250, 450, 200, 40);
+        stop.addActionListener(this);
         stop.setFont(new Font("Arial",Font.BOLD,16));
         stop.setOpaque(true); 
         stop.setForeground(Color.yellow);
@@ -70,6 +72,7 @@ public class HomePages extends JFrame implements ActionListener {
         add(stop);
 
         Restart = new JButton("Restart");
+        Restart.addActionListener(this);
         Restart.setBounds(160, 530, 200, 40);
         Restart.setFont(new Font("Arial",Font.BOLD,16));
         Restart.setOpaque(true); 
@@ -85,6 +88,10 @@ public class HomePages extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae){
        if(ae.getSource()==start){
           Timer.start();
+       }else if(ae.getSource()==stop){
+           Timer.stop();
+       }else if(ae.getSource()==Restart){
+            Timer.Restart();
        }
     }
     public static void main(String[] args) {
